@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>admin</title>
+</head>
+<body>
+    <button onclick='send()'>send</button>
+    <script>
+        function send(){
+            var data={
+                        _id:10000,
+                        title:'',
+                        author:'Jekyll',
+                        content:'# x\n## hello world',
+                        describe:'just for record',
+                        create_time:'',
+                        label:'html',
+                        alter_time:'',
+                        type:'原创',
+                        access_time:1
+                    }
+            var xhr = new XMLHttpRequest()
+            xhr.open('post','/admin/article/issue')
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState == 4){
+                    if(xhr.status==200){
+                        console.log(xhr.response)
+                    }else{
+                        errorMessage.innerHTML='内部错误'
+                    }
+                }
+            }
+            xhr.send(JSON.stringify(data)) 
+        }
+    </script>
+</body>
+</html>

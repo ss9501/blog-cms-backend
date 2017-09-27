@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        #login-wrap{
+            position: absolute;
+            left:50%;
+            top:50%;
+            transform: translate(-50%,-50%)
+        }
+        .logo{
+            width:150px;
+            margin:0 auto;
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .logo>img{
+            width:150px;
+            
+        }
+        .logo>img.active{
+            animation: loading 3s ease-in-out infinite
+        }
+
+        .logo>.logo-sup{
+            position: absolute;
+            right:-10px;
+            top:0;
+            padding:1px 4px;
+            background-color:#12a5ff;
+            border-radius:5px;
+            color:white;
+            font-size:small; 
+        }
+        .logo>.logo-sup.active{
+             animation: loading2 3s ease-in-out infinite
+        }
+       
+        h1{
+            text-align: center;
+            font-weight: 300;
+        }
+        .welcome{
+            font-size:14px;
+            line-height:20px;
+            font-weight: 300;
+            text-align: center
+        }
+
+        .login-form{
+            margin-top:40px;
+            width:334px;
+            max-width:100%;
+            text-align:left
+        }
+        label{
+            display: block;
+            margin-bottom: 21px;
+            border-bottom: 1px solid #e1e1e1;
+            padding: 0 7px;
+        }
+        input[type='text'],input[type='password']{
+            display: block;
+            color: #9b9b9b;
+            font-size: 14px;
+            border: 0;
+            outline: 0;
+            font-weight: 300;
+            height:35px;
+            width: 280px;
+        }
+        
+        .submit{
+            display:block;
+            width:100%;
+            background-color: #12a5ff;
+            font-size:12px;
+            color:#fff;
+            margin-top:40px;
+            line-height: 40px;
+            border-radius:4px;
+            border:0;
+        }
+        .error-message{
+            font-size:13px;
+            color:red;
+        }
+
+        @keyframes loading
+            {
+                from{transform:rotate(0)}
+                to{transform:rotate(-360deg)}
+            }
+
+        @-webkit-keyframes loading /*Safari and Chrome*/
+            {
+                from{transform:rotate(0)}
+                to{transform:rotate(-360deg)}
+            }
+            
+        @keyframes loading2
+            {
+                from{transform:rotate(0)}
+                to{transform:rotate(360deg)}
+            }
+
+        @-webkit-keyframes loading2 /*Safari and Chrome*/
+            {
+                from{transform:rotate(0)}
+                to{transform:rotate(360deg)}
+            }
+    </style>
+</head>
+<body>
+    <div id='login-wrap'>
+        <div class='logo'>
+            <img src="/logo_big.png" alt="logo" class='logo-img'>
+            <div class='logo-sup'>beta</div>
+        </div>
+        <div class='form-area'>
+        <h1>Welcome back!</h1>
+        <div class='welcome'>Login with your account below to get started</div>
+        <div class='login-form'>
+            <label>
+                <input type="text" class='username' name='username' value='admin' placeholder="Username" autocomplete="off">
+            </label>
+            <label>
+                <input type="password" class='password' name='password' value='admin' placeholder="Password" >
+            </label>
+            <input type="button" value="LET'S GET STARTED" class='submit'>
+            <div class='error-message'></div>
+        </div>
+    </div>
+    </div>
+    <script>
+        var username = document.querySelector('.username')
+        var password = document.querySelector('.password')
+        var submit = document.querySelector('.submit')
+        var errorMessage = document.querySelector('.error-message')
+        var logoImg = document.querySelector('.logo-img')
+        var logoSup = document.querySelector('.logo-sup')
+        var userinfo ;
+       
+       
+        function getData(){
+            var xhr = new XMLHttpRequest()
+            xhr.open('get','/admin')
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState == 4){
+                    if(xhr.status==200){
+                        logoImg.classList.remove('active')
+                        logoSup.classList.remove('active')
+
+                        window.location.href='/admin'  
+                    }else{
+                        errorMessage.innerHTML='内部错误'
+                    }
+                }
+            }
+            xhr.send(null) 
+        }
+
+
+        function login(){
+            userinfo ="username="+username.value+"&password="+password.value
+            var xhr = new XMLHttpRequest()
+            xhr.open('POST','/admin/login')
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState == 4){
+                    if(xhr.status==200){
+                    //模拟加载动画
+                        logoImg.classList.add('active')
+                        logoSup.classList.add('active')
+                            getData() 
+                        
+                    }else if(xhr.status==400){
+                        errorMessage.innerHTML=xhr.responseText
+                    }else{
+                        errorMessage.innerHTML='内部错误'
+                    }
+                }
+            }
+            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            xhr.send(userinfo)   
+        }
+
+        submit.addEventListener('click',function(){
+           login()
+        })
+        var body = document.querySelector('body')
+        body.addEventListener('keydown',function(){
+            if (event.keyCode == 13) {
+                login()
+            }
+        })
+
+    </script>
+</body>
+</html>
