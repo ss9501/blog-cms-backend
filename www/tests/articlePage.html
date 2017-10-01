@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+    <style>
+        *{
+           font-family: Arial, Helvetica, sans-serif;
+        }
+        body{
+             background-color:#eee;
+             margin:0;padding:0;
+             position: relative;
+        }
+        ul,li{
+            list-style: none;
+            margin:0;
+        }
+         .shadow{
+            box-shadow: 2px 2px 2px #ddd;
+        }
+        header{
+            background-color: #fff;
+            position: fixed;
+            top:0;
+            right:0;
+            width:100%
+        }
+        .logo{
+            display:none;
+        }
+        nav>ul{
+             padding-right:24px;
+         }
+        nav>ul:after{
+            content:'';
+            display: block;
+            clear: both
+        }
+        nav>ul>li{
+            float:right;
+            margin-right:8px 12px;
+        }
+        nav>ul>li>a{
+            display: block;
+            text-decoration: none;
+            color:#000;
+            font-size: 20px;
+            padding:12px;
+        }
+        .main{
+            margin-top:50px;
+            padding:8px;
+        }
+        .post-header>span{
+            color:#bbb;
+            font-size:14px;
+        }
+        footer{
+            padding:4px;
+            text-align: center;
+            font-size:14px;
+            color:#777
+        }
+        footer>a{
+            text-decoration: none;
+            color:inherit
+        }
+    @media(min-width:736px){
+        header{
+            background-color:#fff;
+            position: fixed;
+        }
+         
+        header::after{
+            content:'';
+            display: table;
+            clear: both;
+        }
+        .logo{
+            display: block;
+            float:left;
+            padding-left:24px;
+        }
+        .logo img{
+            height:50px;
+            vertical-align: middle;
+        }
+        .post{
+            background-color: #fff;
+            max-width:768px;
+            margin:0 auto;
+            padding:18px;
+        }
+        .post-content{
+            margin-top:8px;
+        }
+
+    }
+        
+    </style>
+<body>    
+    <header class='shadow'>
+        <div class='logo'>
+            <a href="www.kulolo.top"><img src="http://repsitory.oss-cn-shanghai.aliyuncs.com/jekyll.png" alt=""></a> 
+        </div>
+        <nav>
+            <ul>
+                <li><a href="www.kulolo.top">Home</a></li>
+                <li><a href="www.kulolo.top/portfolio">Portfolio</a></li>
+            </ul>    
+        </nav>
+    </header>
+    <div class='main'> 
+        <article>
+            <section class='post shadow'>       
+                    <div class='post-header'>
+                        <h2>this 到底是什么</h2> <span>2017年9月30日</span>
+                    </div>
+                    <div class='post-content'>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia officiis optio animi saepe,
+                         possimus odit delectus quaerat corporis modi. Perferendis, molestiae eos commodi libero 
+                         voluptas dolorum, recusandae est explicabo ipsam.
+                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia officiis optio animi saepe,
+                         possimus odit delectus quaerat corporis modi. Perferendis, molestiae eos commodi libero 
+                         voluptas dolorum, recusandae est explicabo ipsam.
+                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia officiis optio animi saepe,
+                         possimus odit delectus quaerat corporis modi. Perferendis, molestiae eos commodi libero 
+                         voluptas dolorum, recusandae est explicabo ipsam.
+                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia officiis optio animi saepe,
+                         possimus odit delectus quaerat corporis modi. Perferendis, molestiae eos commodi libero 
+                         voluptas dolorum, recusandae est explicabo ipsam.
+                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia officiis optio animi saepe,
+                         possimus odit delectus quaerat corporis modi. Perferendis, molestiae eos commodi libero 
+                         voluptas dolorum, recusandae est explicabo ipsam.
+                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia officiis optio animi saepe,
+                         possimus odit delectus quaerat corporis modi. Perferendis, molestiae eos commodi libero 
+                         voluptas dolorum, recusandae est explicabo ipsam.
+                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia officiis optio animi saepe,
+                         possimus odit delectus quaerat corporis modi. Perferendis, molestiae eos commodi libero 
+                         voluptas dolorum, recusandae est explicabo ipsam.
+                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia officiis optio animi saepe,
+                         possimus odit delectus quaerat corporis modi. Perferendis, molestiae eos commodi libero 
+                         voluptas dolorum, recusandae est explicabo ipsam.
+                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia officiis optio animi saepe,
+                         possimus odit delectus quaerat corporis modi. Perferendis, molestiae eos commodi libero 
+                         voluptas dolorum, recusandae est explicabo ipsam.
+                    </div>
+            </section>
+        </article>
+    </div>
+    <footer>&copy; <a href="https://github.com/ss9501" target="_blank">github: ss9501</a> </footer>
+</body>
+</html>

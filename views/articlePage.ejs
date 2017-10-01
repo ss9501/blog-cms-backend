@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    
+</head>
+    <style>
+        *{
+           font-family: Arial, Helvetica, sans-serif;box-sizing: border-box;
+        }
+        body{
+             background-color:#eee;
+             margin:0;padding:0;
+             position: relative;
+             width:100%
+        }
+        ul,li{
+            list-style: none;
+            margin:0;
+        }
+         .shadow{
+            box-shadow: 2px 2px 2px #ddd;
+        }
+        header{
+            background-color: #fff;
+            position: fixed;
+            top:0;
+            right:0;
+            width:100%
+        }
+        .logo{
+            display:none;
+        }
+        nav>ul{
+             padding-right:24px;
+         }
+        nav>ul:after{
+            content:'';
+            display: block;
+            clear: both
+        }
+        nav>ul>li{
+            float:right;
+            margin-right:8px 12px;
+        }
+        nav>ul>li>a{
+            display: block;
+            text-decoration: none;
+            color:#000;
+            font-size: 20px;
+            padding:12px;
+        }
+        .main{
+            margin-top:50px;
+            padding:8px;
+        }
+        .post img{
+            width:100%;
+        }
+        .post-header>span{
+            color:#bbb;
+            font-size:14px;
+        }
+        footer{
+            padding:4px;
+            text-align: center;
+            font-size:14px;
+            color:#777
+        }
+        footer>a{
+            text-decoration: none;
+            color:inherit
+        }
+    @media(min-width:736px){
+        header{
+            background-color:#fff;
+            position: fixed;
+        }
+         
+        header::after{
+            content:'';
+            display: table;
+            clear: both;
+        }
+        .logo{
+            display: block;
+            float:left;
+            padding-left:24px;
+        }
+        .logo img{
+            height:50px;
+            vertical-align: middle;
+        }
+        .post{
+            background-color: #fff;
+            max-width:768px;
+            margin:0 auto;
+            padding:18px;
+        }
+        .post-content{
+            margin-top:8px;
+        }
+
+    }
+        
+    </style>
+<body>    
+    <header class='shadow'>
+        <div class='logo'>
+            <a href="http://www.kulolo.top/blog"><img src="http://repsitory.oss-cn-shanghai.aliyuncs.com/jekyll.png" alt=""></a> 
+        </div>
+        <nav>
+            <ul>
+                <li><a href="http://www.kulolo.top/blog">Home</a></li>
+                <li><a href="http://www.kulolo.top/portfolio">Portfolio</a></li>
+            </ul>    
+        </nav>
+    </header>
+    <div class='main'> 
+        <article>
+            <% for(var i=0;i<data.length;i++) {%> 
+            <section class='post shadow'>       
+                    <div class='post-header'>
+                        <h2><%= data[i].title %></h2> <span><%=  data[i].create_time %></span>
+                    </div>
+                    <div class='post-content'>
+                         <%- data[i].content %>
+                    </div>
+            </section>
+            <% } %>
+        </article>
+    </div>
+    <footer>&copy; <a href="https://github.com/ss9501" target="_blank">github: ss9501</a> </footer>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+</body>
+</html>

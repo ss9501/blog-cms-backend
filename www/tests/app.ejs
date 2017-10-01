@@ -10,20 +10,8 @@
     <button onclick='send()'>send</button>
     <script>
         function send(){
-            var data={
-                        _id:10000,
-                        title:'',
-                        author:'Jekyll',
-                        content:'# x\n## hello world',
-                        describe:'just for record',
-                        create_time:'',
-                        label:'html',
-                        alter_time:'',
-                        type:'原创',
-                        access_time:1
-                    }
             var xhr = new XMLHttpRequest()
-            xhr.open('post','/admin/article/issue')
+            xhr.open('get','/blog')
             xhr.onreadystatechange=function(){
                 if(xhr.readyState == 4){
                     if(xhr.status==200){
@@ -33,7 +21,7 @@
                     }
                 }
             }
-            xhr.send(JSON.stringify(data)) 
+            xhr.send(null) 
         }
     </script>
 </body>

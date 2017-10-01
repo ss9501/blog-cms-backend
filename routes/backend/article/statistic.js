@@ -4,7 +4,6 @@ const util = require('util');
 const Articles = require('../../../models/articles.js')
 
 router.get('/',(req,res)=>{
-    console.log(req.query)
     Articles.count({},(err,count)=>{
         if(err){
             res.json({

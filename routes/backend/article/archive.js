@@ -4,8 +4,8 @@ const Articles = require('../../../models/articles.js')
 
 /* post article to the backend*/
 router.get('/',(req,res)=>{
- let currentPage = parseInt(req.param('currentPage'))
- let pageSize =parseInt(req.param('pageSize')) 
+ let currentPage = parseInt(req.query.currentPage)
+ let pageSize =parseInt(req.query.pageSize) 
  let skip = (currentPage-1)*pageSize
  let articlesModel = Articles.find().skip(skip).limit(pageSize)
  articlesModel.sort({_id:-1})

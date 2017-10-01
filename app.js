@@ -31,13 +31,20 @@ app.use(cookieSession({
   keys:['aaa','bbb','ccc'],
   maxAge:2*3600*1000
 }))
+
+
 /*后台入口*/
 app.use('/admin',require('./routes/backend/admin.js'))
 
 /*静态资源入口 */
 app.use(express.static(path.join(__dirname, 'static')));
 
+app.use('/blog',require('./routes/frontend/blog.js'))
 
+
+// app.use('/',(req,res)=>{
+//   res.render('app.ejs',{})
+// })
 
 
 app.listen(8080)

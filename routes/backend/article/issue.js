@@ -13,14 +13,20 @@ router.post('/',(req,res)=>{
       counters.findByIdAndUpdate('articleid', {$inc:{sequence_value:1}}, function (err, data) {
             if (err) return handleError(err);
             obj._id=data.sequence_value
-            console.log(obj)
             var articles = new collection(obj)
             articles.save(function(err){
                 if(err){
-                  console.log(err);
+                  res.json({
+                    status:'1',
+                    msg:err.message
+                  });
                 }else{
-                  console.log('成功插入数据');
+                  res.json({
+                    status:'0',
+                    msg:'insert Ok'
+                  })
                 }
+                
               })
           });
     }else{
@@ -30,9 +36,15 @@ router.post('/',(req,res)=>{
       //更新已存在的数据
       collection.update({_id:obj._id},{$set:obj},function(err){
         if(err){
-          console.log(err)
+          res.json({
+            status:'1',
+            msg:err.message
+          });
         }else{
-          console.log('ok')
+          res.json({
+            status:'0',
+            msg:'refresh OK'
+          })
         }
       })
     }
@@ -41,9 +53,7 @@ router.post('/',(req,res)=>{
   
     //console.log(util.inspect(JSON.parse(chunk), true))
   
-    saveArticle(req.body,Articles)
-
-  res.status(200).send('ok')
+  saveArticle(req.body,Articles)
 });
 
 module.exports = router
